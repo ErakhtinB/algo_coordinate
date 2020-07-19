@@ -1,27 +1,32 @@
 #include "coordinate.h"
 
-Coordinate::Coordinate(unsigned short x, unsigned short y) : x(x), y(y) {}
-
-bool Coordinate::operator== (const Coordinate &c) const
+namespace  coordinate
 {
-    return x == c.x && y == c.y;
+
+Coordinate::Coordinate(CoordinateType x, CoordinateType y) : m_x(x), m_y(y) {}
+
+bool Coordinate::operator== (const Coordinate& c) const
+{
+    return m_x == c.m_x && m_y == c.m_y;
 }
 
-bool Coordinate::operator< (const Coordinate &c) const
+bool Coordinate::operator< (const Coordinate& c) const
 {
-    return x < c.x;
+    return m_x < c.m_x;
 }
 
-unsigned short Coordinate::X() const
+CoordinateType Coordinate::X() const
 {
-    return x;
+    return m_x;
 }
-unsigned short Coordinate::Y() const
+CoordinateType Coordinate::Y() const
 {
-    return y;
+    return m_y;
 }
 
-unsigned long CoordinateHash::operator()(const Coordinate& p) const
+std::size_t CoordinateHash::operator()(const Coordinate& p) const
 {
-    return p.X() << (sizeof(unsigned short) * 8) | p.Y();
+    return p.X() ^ p.Y();
+}
+
 }

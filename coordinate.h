@@ -1,24 +1,34 @@
 #ifndef COORDINATE_H
 #define COORDINATE_H
 
+#include <cstdint>
+
+namespace coordinate
+{
+
+using CoordinateType = std::uint64_t;
+
 struct Coordinate
 {
-    Coordinate(unsigned short x, unsigned short y);
+    Coordinate() = delete;
+    Coordinate(CoordinateType x, CoordinateType y);
 
-    unsigned short X() const;
-    unsigned short Y() const;
+    CoordinateType X() const;
+    CoordinateType Y() const;
 
-    bool operator == (const Coordinate &c) const;
-    bool operator < (const Coordinate &c) const;
+    bool operator == (const Coordinate& c) const;
+    bool operator < (const Coordinate& c) const;
 
 private:
-    unsigned short x;
-    unsigned short y;
+    CoordinateType m_x;
+    CoordinateType m_y;
 };
 
 struct CoordinateHash
 {
-    unsigned long operator()(const Coordinate& p) const;
+    std::size_t operator()(const Coordinate& p) const;
 };
+
+}
 
 #endif // COORDINATE_H

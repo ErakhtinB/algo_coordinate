@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/coordinate.cpp	
+    ${CMAKE_CURRENT_SOURCE_DIR}/coordinate.cpp
 )
 
 set(HEADERS
