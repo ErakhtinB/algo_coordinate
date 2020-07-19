@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 #include <algorithm>
 
@@ -15,16 +15,16 @@ int main()
     unsigned short mininalX = min_element(coordinateVector.begin(), coordinateVector.end())->X();
     unsigned short middleX = (maximumX + mininalX) / 2;
 
-    std::unordered_map<Coordinate, int, CoordinateHash> coordinateMap;
+    std::unordered_set<Coordinate, CoordinateHash> coordinateMap;
 
     for (auto x : coordinateVector)
     {
-        coordinateMap.insert({x, 0});
+        coordinateMap.insert(x);
     }
 
     for (auto x : coordinateMap)
     {
-        Coordinate buf(2 * middleX - x.first.X(), x.first.Y());
+        Coordinate buf(2 * middleX - x.X(), x.Y());
         if (coordinateMap.find(buf) == coordinateMap.end())
         {
             vertical = false;
