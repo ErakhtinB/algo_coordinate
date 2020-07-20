@@ -10,18 +10,10 @@ using CoordinateType = std::uint64_t;
 
 struct Coordinate
 {
-    Coordinate() = delete;
-    Coordinate(CoordinateType x, CoordinateType y);
-
-    CoordinateType X() const;
-    CoordinateType Y() const;
-
+    CoordinateType x;
+    CoordinateType y;
     bool operator == (const Coordinate& c) const;
     bool operator < (const Coordinate& c) const;
-
-private:
-    CoordinateType m_x;
-    CoordinateType m_y;
 };
 
 struct CoordinateHash
