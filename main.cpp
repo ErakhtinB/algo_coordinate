@@ -15,7 +15,7 @@ int main()
                                                                             coordinateVector.begin(),
                                                                             coordinateVector.end());
     bool verticalLineExists = true;
-    for (auto point : coordinateMap)
+    for (const auto& point : coordinateMap)
     {
         if (coordinateMap.find({coordinate::CoordinateType{2} * middleX - point.x, point.y}) == coordinateMap.end())
         {
